@@ -3,8 +3,9 @@
   "tasks": [
     {
       "label": "vite: dev",
-      "type": "npm",
-      "script": "dev",
+      "type": "shell",
+      // npm comes from nvm, which is lazy-loaded only in interactive shells
+      "command": "source \"${env:HOME}/.nvm/nvm.sh\" && nvm use && npm run dev",
       "isBackground": true,
       "problemMatcher": {
         "owner": "vite",
