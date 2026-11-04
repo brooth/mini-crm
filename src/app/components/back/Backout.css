@@ -3,7 +3,7 @@
   justify-content: flex-start;
   font-size: 14px;
   font-weight: 400;
-  font-family: "Lato";
+  font-family: var(--app-font-family);
   line-height: 20px;
 }
 

@@ -93,13 +93,15 @@ export default function TaskPage() {
           <Card>
             <CardHeader title="Задача" />
             <CardContent>
-              <CardItem icon="@object" head="Объект" text={task.object.name}>
-                <Link className="app-taskPage-objectLink" to={`/objects/${task.object_id}`}>открыть</Link>
-              </CardItem>
-              <CardItem icon="map-marker" head="Адрес" text={task.object.address || '—'} />
-              <CardItem icon="person" head="Исполнитель" text={task.assignee.full_name} />
-              <CardItem icon="edit" head="Постановщик" text={task.author.full_name} />
-              <CardItem icon="calendar" head="Создана" text={formatDateTime(task.created_at)} />
+              <CardItem
+                icon="office"
+                text="Объект"
+                tail={<Link to={`/objects/${task.object_id}`}>{task.object.name}</Link>}
+              />
+              <CardItem icon="map-marker" text="Адрес" tail={task.object.address || '—'} />
+              <CardItem icon="person" text="Исполнитель" tail={task.assignee.full_name} />
+              <CardItem icon="edit" text="Постановщик" tail={task.author.full_name} />
+              <CardItem icon="calendar" text="Создана" tail={formatDateTime(task.created_at)} />
               <div className="app-taskPage-description">
                 {task.description || <span className="app-taskPage-noDescription">Без описания</span>}
               </div>

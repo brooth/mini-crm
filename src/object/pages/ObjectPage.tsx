@@ -91,7 +91,7 @@ export default function ObjectPage() {
       <Column gap={20}>
         <Card>
           <CardContent>
-            <CardItem icon="map-marker" head="Адрес" text={object.address || '—'} />
+            <CardItem icon="map-marker" text="Адрес" tail={object.address || '—'} />
           </CardContent>
         </Card>
         <Card>

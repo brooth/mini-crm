@@ -1,5 +1,5 @@
 .app-buttons-button[class~="bp6-button"] {
-  font-family: "Lato";
+  font-family: var(--app-font-family);
   font-size: 14px;
   opacity: 1;
   min-height: 32px;

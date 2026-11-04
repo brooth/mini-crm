@@ -1,5 +1,5 @@
 .app-form-text-area textarea {
-  font-family: 'Lato';
+  font-family: var(--app-font-family);
   border-radius: 3px;
   min-height: 120px;
 }
