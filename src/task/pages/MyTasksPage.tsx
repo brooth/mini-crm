@@ -71,7 +71,7 @@ export default function MyTasksPage() {
         </div>
         {statuses.map((status) => (
           <Card key={status}>
-            <CardHeader title={TASK_STATUSES[status].label} right={<TaskStatusTag status={status} />} />
+            <CardHeader className="app-myTasksPage-statusHeader" left={<TaskStatusTag status={status} />} />
             <CardContent flush={!!byStatus[status]?.length}>
               {!byStatus[status]?.length ? (
                 <Backout compact icon="@task" message="Нет задач в этом статусе" />

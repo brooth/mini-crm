@@ -19,6 +19,11 @@
   outline-offset: -2px;
 }
 
+/* status tag stands in for the card title: align it with the title's 20px indent */
+.app-myTasksPage-statusHeader .left {
+  padding-inline-start: 20px;
+}
+
 .app-myTasksPage-tableWrapper {
   overflow-x: auto;
 }
