@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
 import {
-  Alert, BackActivityIndicator, BackoutApiError, Button, Callout, Card, CardContent, CardHeader,
-  CardItem, Column, Grid, PageContent, PageHeader, PageNotFound, Toast
+  Alert, BackActivityIndicator, BackoutApiError, Callout, Card, CardContent, CardHeader,
+  CardItem, Column, Grid, MenuItem, PageContent, PageHeader, PageNotFound, PopupMenuButton, Toast
 } from "app/components";
 import { useIsManager } from "auth/auth.hooks";
 import { ApiCallStateBuilder, formatDateTime, useApiErrors } from "utils";
@@ -49,13 +49,13 @@ export default function TaskPage() {
         title={task?.title ?? 'Задача'}
         tag={task ? <TaskStatusTag minimal status={task.status} /> : undefined}
         backButtonPath={backPath}>
-        {isManager && task && (
-          <>
-            <Button icon="edit" variant="minimal" text="Изменить" onClick={() => setEditing(true)} />
-            <Button icon="trash" variant="minimal" intent="danger" onClick={() => setDeleting(true)} />
-          </>
-        )}
         {task && <TaskActions task={task} />}
+        {isManager && task && (
+          <PopupMenuButton icon="more" endIcon={undefined}>
+            <MenuItem icon="edit" text="Изменить" onClick={() => setEditing(true)} />
+            <MenuItem icon="trash" text="Удалить" intent="danger" onClick={() => setDeleting(true)} />
+          </PopupMenuButton>
+        )}
       </PageHeader>
       <PageContent>
         <ApiCallStateBuilder<Task | null>

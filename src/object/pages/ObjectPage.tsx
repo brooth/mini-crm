@@ -3,7 +3,8 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 import {
   Alert, BackActivityIndicator, Backout, BackoutApiError, Button, Card, CardContent,
-  CardHeader, CardItem, Column, HtmlTable, PageContent, PageHeader, PageNotFound, Toast
+  CardHeader, CardItem, Column, HtmlTable, MenuItem, PageContent, PageHeader, PageNotFound,
+  PopupMenuButton, Toast
 } from "app/components";
 import { useIsManager } from "auth/auth.hooks";
 import TaskDialog from "task/components/TaskDialog";
@@ -46,9 +47,11 @@ export default function ObjectPage() {
         backButtonPath="/objects">
         {isManager && object && (
           <>
-            <Button icon="edit" variant="minimal" onClick={() => setEditing(true)} />
-            <Button icon="trash" variant="minimal" intent="danger" onClick={() => setDeleting(true)} />
             <Button icon="plus" intent="primary" text="Новая задача" onClick={() => setCreatingTask(true)} />
+            <PopupMenuButton icon="more" endIcon={undefined}>
+              <MenuItem icon="edit" text="Изменить" onClick={() => setEditing(true)} />
+              <MenuItem icon="trash" text="Удалить" intent="danger" onClick={() => setDeleting(true)} />
+            </PopupMenuButton>
           </>
         )}
       </PageHeader>

@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import {
-  Alert, Backout, BackoutApiError, Button, GridContentLoader, HtmlTable,
-  PageContent, PageHeader, Toast
+  Alert, Backout, BackoutApiError, Button, GridContentLoader, HtmlTable, MenuItem,
+  PageContent, PageHeader, PopupMenuButton, Toast
 } from "app/components";
 import { useIsManager } from "auth/auth.hooks";
 import { ApiCallStateBuilder, useApiErrors, useLocalSearch } from "utils";
@@ -109,8 +109,10 @@ export default function ObjectsPage() {
                 <td className="app-objectsPage-count">{object.tasks[0]?.count ?? 0}</td>
                 {isManager && (
                   <td className="app-objectsPage-actions" onClick={(e) => e.stopPropagation()}>
-                    <Button variant="minimal" small icon="edit" onClick={() => setEditing(object)} />
-                    <Button variant="minimal" small icon="trash" intent="danger" onClick={() => setDeleting(object)} />
+                    <PopupMenuButton small icon="more" endIcon={undefined}>
+                      <MenuItem icon="edit" text="Изменить" onClick={() => setEditing(object)} />
+                      <MenuItem icon="trash" text="Удалить" intent="danger" onClick={() => setDeleting(object)} />
+                    </PopupMenuButton>
                   </td>
                 )}
               </tr>
