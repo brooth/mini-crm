@@ -106,7 +106,7 @@ export default function TaskPage() {
                 <Callout
                   className="app-taskPage-description"
                   intent="warning"
-                  icon="annotation"
+                  icon={null}
                   title="Описание">
                   {task.description}
                 </Callout>

@@ -1,4 +1,7 @@
 .app-taskPage-description {
-  margin-top: 12px;
+  margin: 18px 0px 5px 0px;
+  padding: 10px 10px;
+  border-radius: 5px;
   white-space: pre-wrap;
+  font-size: 10pt;
 }
