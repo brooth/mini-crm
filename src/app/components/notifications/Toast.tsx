@@ -5,7 +5,7 @@ import { Translation } from "react-i18next";
 
 import { ApiError } from "utils";
 
-import "./toast.css";
+import "./Toast.css";
 
 
 export type ToastProps = Omit<Blueprint.ToastProps, "message"> & {
