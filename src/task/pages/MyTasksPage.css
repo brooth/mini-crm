@@ -4,6 +4,19 @@
 
 .app-myTasksPage-filter {
   overflow-x: auto;
+  /* room for the focus ring, otherwise overflow clips it */
+  padding: 2px;
+}
+
+/* Blueprint's outer focus ring overlaps neighbour segments: no ring on mouse click,
+   an inset one for keyboard focus */
+.app-myTasksPage-filter .bp6-segmented-control .bp6-button:focus {
+  outline: none;
+}
+
+.app-myTasksPage-filter .bp6-segmented-control .bp6-button:focus-visible {
+  outline: 2px solid rgb(45 114 210 / 60%);
+  outline-offset: -2px;
 }
 
 .app-myTasksPage-tableWrapper {
