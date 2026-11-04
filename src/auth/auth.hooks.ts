@@ -1,3 +1,6 @@
+import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { useAuthStore } from './auth.store';
 import { Profile, UserRole } from './auth.entity';
 
@@ -17,4 +20,17 @@ export function useIsManager() {
 
 export function homePath(role: UserRole) {
   return role === 'manager' ? '/objects' : '/my-tasks';
+}
+
+/**
+ * Sign out and go to "/" — otherwise the login page would send the next user
+ * back to the previous user's page (it remembers `from`).
+ */
+export function useSignOut() {
+  const navigate = useNavigate();
+  const signOut = useAuthStore((s) => s.signOut);
+  return useCallback(async () => {
+    await signOut();
+    navigate('/', { replace: true });
+  }, [signOut, navigate]);
 }

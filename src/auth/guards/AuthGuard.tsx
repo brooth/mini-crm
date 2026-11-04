@@ -4,6 +4,7 @@ import { BackActivityIndicator, BackoutApiError, Button, PageNotFound } from "ap
 import { isFailed, isSuccessful } from "utils";
 
 import { UserRole } from "../auth.entity";
+import { useSignOut } from "../auth.hooks";
 import { useAuthStore } from "../auth.store";
 
 
@@ -17,7 +18,7 @@ export default function AuthGuard({ roles }: AuthGuardProps) {
   const session = useAuthStore((s) => s.session);
   const loadProfile = useAuthStore((s) => s.loadProfile);
   const fetchProfile = useAuthStore((s) => s.fetchProfile);
-  const signOut = useAuthStore((s) => s.signOut);
+  const signOut = useSignOut();
 
   if (!initialized)
     return <BackActivityIndicator />;

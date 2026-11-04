@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, Navbar, NavbarGroup, NavbarHeading, Tag } from "app/components";
 import { useAppStore } from "app/app.store";
 import { ROLE_LABELS } from "auth/auth.entity";
-import { useProfile } from "auth/auth.hooks";
-import { useAuthStore } from "auth/auth.store";
+import { useProfile, useSignOut } from "auth/auth.hooks";
 
 import "./Topbar.css";
 
@@ -12,7 +11,7 @@ import "./Topbar.css";
 export default function Topbar({ className, menuButton }: TopbarProps) {
   const navigate = useNavigate();
   const profile = useProfile();
-  const signOut = useAuthStore((s) => s.signOut);
+  const signOut = useSignOut();
   const themeMode = useAppStore((s) => s.themeMode);
   const cycleThemeMode = useAppStore((s) => s.cycleThemeMode);
 
