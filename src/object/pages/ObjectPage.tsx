@@ -99,7 +99,7 @@ export default function ObjectPage() {
         </Card>
         <Card>
           <CardHeader title="Задачи" />
-          <CardContent>
+          <CardContent flush={!!loadObjectTasksState.value?.length}>
             <ApiCallStateBuilder<ObjectTask[]>
               state={loadObjectTasksState}
               onLoading={(value) => value ? renderTasks(value) : <BackActivityIndicator compact />}

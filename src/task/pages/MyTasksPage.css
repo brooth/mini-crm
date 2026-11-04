@@ -19,23 +19,8 @@
   outline-offset: -2px;
 }
 
-/* rows span the card edge to edge; hover highlight follows the card's bottom corners */
-.app-myTasksPage-tableContent {
-  padding: 0;
-}
-
 .app-myTasksPage-tableWrapper {
   overflow-x: auto;
-  border-radius: 0 0 6px 6px;
-}
-
-/* keep text aligned with the card header title */
-.app-myTasksPage-table td:first-child {
-  padding-inline-start: 20px;
-}
-
-.app-myTasksPage-table td:last-child {
-  padding-inline-end: 20px;
 }
 
 .app-myTasksPage-table {

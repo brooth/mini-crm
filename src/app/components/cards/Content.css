@@ -2,6 +2,22 @@
   padding: 15px 20px 8px 20px;
 }
 
+.app-card-content-flush {
+  padding: 0;
+  overflow: hidden;
+  /* matches .app-card */
+  border-radius: 0 0 6px 6px;
+}
+
+/* keep edge cells aligned with the card header title */
+.app-card-content-flush .bp6-html-table :is(th, td):first-child {
+  padding-inline-start: 20px;
+}
+
+.app-card-content-flush .bp6-html-table :is(th, td):last-child {
+  padding-inline-end: 20px;
+}
+
 .app-card-content h4:first-child{
   margin: 0px 0px 10px -8px;;
 }
