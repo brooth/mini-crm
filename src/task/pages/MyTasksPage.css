@@ -25,10 +25,26 @@
 
 .app-myTasksPage-table {
   width: 100%;
+  /* same column widths in every status card */
+  table-layout: fixed;
+}
+
+.app-myTasksPage-table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-myTasksPage-object {
+  width: 28%;
+}
+
+.app-myTasksPage-assignee {
+  width: 22%;
 }
 
 .app-myTasksPage-date {
-  width: 1%;
+  width: 110px;
   white-space: nowrap;
   text-align: end !important;
   color: var(--app-text-tertiary);

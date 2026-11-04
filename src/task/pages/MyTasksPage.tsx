@@ -22,7 +22,8 @@ type Filter = TaskStatus | 'all';
 export default function MyTasksPage() {
   const navigate = useNavigate();
   const profile = useProfile();
-  const { loadMyTasksState, loadMyTasks } = useLoadMyTasks(profile.id);
+  const isManager = profile.role === 'manager';
+  const { loadMyTasksState, loadMyTasks } = useLoadMyTasks(profile);
   const [filter, setFilter] = useState<Filter>('all');
 
   const byStatus = useMemo(() =>
@@ -35,7 +36,7 @@ export default function MyTasksPage() {
 
   return (
     <>
-      <PageHeader icon="@myTasks" title="Мои задачи">
+      <PageHeader icon={isManager ? 'clipboard' : '@myTasks'} title="Мои задачи">
         <Button icon="refresh" variant="minimal" onClick={loadMyTasks} />
       </PageHeader>
       <PageContent>
@@ -43,7 +44,8 @@ export default function MyTasksPage() {
           state={loadMyTasksState}
           onLoading={(value) => value ? renderTasks() : <GridContentLoader md={2} xs={1} gap={20} />}
           onError={(error) => <BackoutApiError error={error} onTryAgain={loadMyTasks} />}
-          onValueEmpty={() => <Backout className="app-myTasksPage-empty" icon="@task" title="Задач пока нет" />}
+          onValueEmpty={() => <Backout className="app-myTasksPage-empty" icon="@task" title="Задач пока нет"
+            message={isManager ? 'Здесь будут задачи, которые вы поставили исполнителям' : undefined} />}
           onValue={renderTasks}
         />
       </PageContent>
@@ -87,7 +89,8 @@ export default function MyTasksPage() {
                               {task.title}
                             </Link>
                           </td>
-                          <td>{task.object.name}</td>
+                          <td className="app-myTasksPage-object">{task.object.name}</td>
+                          {isManager && <td className="app-myTasksPage-assignee">{task.assignee.full_name}</td>}
                           <td className="app-myTasksPage-date">{formatDate(task.created_at)}</td>
                         </tr>
                       ))}

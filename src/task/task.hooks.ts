@@ -5,6 +5,8 @@ import { objectStore } from "object/object.store";
 import { failed, loading, success } from "utils/api-state";
 import { useApiTools, useAutoLoad } from "utils/store";
 
+import type { Profile } from "auth/auth.entity";
+
 import { TaskInput, TaskStatus } from "./task.entity";
 import { taskStore, useTaskStore } from "./task.store";
 
@@ -58,23 +60,24 @@ export function useLoadTaskHistory(id: string, opts: { auto?: boolean } = {}) {
   return { loadTaskHistoryState: loadTaskHistoryState ?? {}, loadTaskHistory };
 }
 
-export function useLoadMyTasks(userId: string) {
+/** Executor: tasks assigned to him. Manager: tasks he created (for his executors). */
+export function useLoadMyTasks(me: Pick<Profile, 'id' | 'role'>) {
   const { state, db } = useApiTools(taskStore);
   const loadMyTasksState = useTaskStore((s) => s.loadMyTasks);
 
   const loadMyTasks = useCallback(async () => {
     state.setLoadMyTasks(loading(state.loadMyTasks.value));
     try {
-      // RLS already limits an executor to his own tasks; the filter just states intent
+      // for an executor RLS already limits the rows to his own; the filter just states intent
       const value = unwrap(await db.from('tasks')
-        .select('id, title, status, created_at, object:objects(id, name)')
-        .eq('assignee_id', userId)
+        .select('id, title, status, created_at, object:objects(id, name), assignee:profiles!tasks_assignee_id_fkey(id, full_name)')
+        .eq(me.role === 'manager' ? 'author_id' : 'assignee_id', me.id)
         .order('created_at', { ascending: false }));
       state.setLoadMyTasks(success(value));
     } catch (error) {
       state.setLoadMyTasks(failed(error));
     }
-  }, [userId]);
+  }, [me.id, me.role]);
 
   useAutoLoad(loadMyTasksState, loadMyTasks);
 

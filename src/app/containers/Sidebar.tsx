@@ -14,7 +14,7 @@ export default function Sidebar({
   const navigate = useNavigate();
   const location = useLocation();
   const classes = useClassNames("app-sidebar", className);
-  const isExecutor = useHasRole('executor');
+  const isManager = useHasRole('manager');
 
   const isSelected = (path: string) =>
     location.pathname === path || location.pathname.startsWith(path + '/');
@@ -22,10 +22,9 @@ export default function Sidebar({
   return (
     <Menu className={classes} {...rest}>
       <MenuItem
-        icon="@myTasks"
+        icon={isManager ? 'clipboard' : '@myTasks'}
         onClick={() => navigate('/my-tasks')}
         active={isSelected('/my-tasks')}
-        hidden={!isExecutor}
         text="Мои задачи"
       />
       <MenuItem

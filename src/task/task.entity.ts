@@ -17,13 +17,14 @@ export interface Task extends TaskInput {
   author: ProfileShort;
 }
 
-/** Row in "my tasks" */
+/** Row in "my tasks": assigned to me (executor) or created by me (manager) */
 export interface MyTask {
   id: string;
   title: string;
   status: TaskStatus;
   created_at: string;
   object: { id: string, name: string };
+  assignee: ProfileShort;
 }
 
 export interface TaskHistoryEntry {

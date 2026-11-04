@@ -26,9 +26,7 @@ function App() {
             <Route path="objects" element={<ObjectsPage />} />
             <Route path="objects/:id" element={<ObjectPage />} />
             <Route path="tasks/:id" element={<TaskPage />} />
-            <Route element={<AuthGuard roles={['executor']} />}>
-              <Route path="my-tasks" element={<MyTasksPage />} />
-            </Route>
+            <Route path="my-tasks" element={<MyTasksPage />} />
             <Route path="*" element={<PageNotFound />} />
           </Route>
         </Route>
