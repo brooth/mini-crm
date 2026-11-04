@@ -2,10 +2,9 @@ import { Icon } from "@blueprintjs/core";
 import { Navigate, useLocation } from "react-router-dom";
 
 import {
-  Card, CardContent, CardHeader, Column, Form, FormButton, Row, TextInputField
+	Card, CardContent, CardHeader, Column, Form, FormButton, Row, TextInputField
 } from "app/components";
 import { useApiErrors, useFormData } from "utils";
-
 import { useAuthStore } from "../auth.store";
 import "./LoginPage.css";
 

@@ -1,11 +1,11 @@
 import type { Session } from '@supabase/supabase-js';
-import { create } from 'zustand';
+import { create } from "zustand";
 
-import { supabase } from 'utils/supabase';
-import { ApiCallState, empty, failed, loading, success } from 'utils/api-state';
-import { resetStores } from 'utils/store';
+import { supabase } from "utils/supabase";
+import { ApiCallState, empty, failed, loading, success } from "utils/api-state";
+import { resetStores } from "utils/store";
+import { Profile } from "./auth.entity";
 
-import { Profile } from './auth.entity';
 
 interface AuthState {
   // false until supabase reports the initial session (restored from localStorage)
@@ -47,7 +47,10 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
     set({ loadProfile: loading() });
     try {
       const { data, error } = await supabase
-        .from('profiles').select('id, full_name, role').eq('id', userId).single();
+        .from('profiles')
+        .select('id, full_name, role')
+        .eq('id', userId).single();
+
       if (error) throw error;
       set({ loadProfile: success(data) });
     } catch (error) {
@@ -58,7 +61,10 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
   signIn: async (email, password) => {
     set({ signInState: loading() });
     try {
-      const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
+      const { error } = await supabase
+        .auth
+        .signInWithPassword({ email: email.trim(), password });
+
       if (error) throw error;
       set({ signInState: success(null) });
     } catch (error) {

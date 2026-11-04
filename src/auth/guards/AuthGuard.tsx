@@ -1,8 +1,9 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-
-import { BackActivityIndicator, BackoutApiError, Button, PageNotFound } from "app/components";
 import { isFailed, isSuccessful } from "utils";
 
+import {
+	BackActivityIndicator, BackoutApiError, Button, PageNotFound
+} from "app/components";
 import { UserRole } from "../auth.entity";
 import { useSignOut } from "../auth.hooks";
 import { useAuthStore } from "../auth.store";
