@@ -1,7 +1,7 @@
 import { Dialog, DialogBody, DialogFooter } from "@blueprintjs/core";
 import { useState } from "react";
 
-import { Button, Row, TextAreaField, Toast } from "app/components";
+import { Button, TextAreaField, Toast } from "app/components";
 import { useProfile } from "auth/auth.hooks";
 import { useApiErrors } from "utils";
 
@@ -36,18 +36,17 @@ export default function TaskActions({ task }: TaskActionsProps) {
 
   return (
     <>
-      <Row gap={10} style={{ flexWrap: 'wrap' }}>
-        {actions.map((action) => (
-          <Button
-            key={action.to}
-            text={action.label}
-            intent={action.intent}
-            loading={pending === action}
-            disabled={changeStatusState.isLoading}
-            onClick={() => action.needsComment ? setCommentAction(action) : run(action)}
-          />
-        ))}
-      </Row>
+      {/* rendered as direct PageHeader children, like other header buttons */}
+      {actions.map((action) => (
+        <Button
+          key={action.to}
+          text={action.label}
+          intent={action.intent}
+          loading={pending === action}
+          disabled={changeStatusState.isLoading}
+          onClick={() => action.needsComment ? setCommentAction(action) : run(action)}
+        />
+      ))}
       <Dialog
         title={commentAction?.label}
         isOpen={commentAction != null}

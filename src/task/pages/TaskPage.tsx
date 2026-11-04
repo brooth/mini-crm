@@ -2,17 +2,16 @@ import { useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
 import {
-  Alert, BackActivityIndicator, BackoutApiError, Button, Card, CardContent, CardHeader,
+  Alert, BackActivityIndicator, BackoutApiError, Button, Callout, Card, CardContent, CardHeader,
   CardItem, Column, Grid, PageContent, PageHeader, PageNotFound, Toast
 } from "app/components";
-import { useIsManager, useProfile } from "auth/auth.hooks";
+import { useIsManager } from "auth/auth.hooks";
 import { ApiCallStateBuilder, formatDateTime, useApiErrors } from "utils";
 
 import TaskActions from "../components/TaskActions";
 import TaskDialog from "../components/TaskDialog";
 import TaskHistory from "../components/TaskHistory";
 import TaskStatusTag from "../components/TaskStatusTag";
-import { availableActions } from "../task.actions";
 import { Task, TaskHistoryEntry } from "../task.entity";
 import { useDeleteTask, useLoadTask, useLoadTaskHistory } from "../task.hooks";
 import "./TaskPage.css";
@@ -48,7 +47,7 @@ export default function TaskPage() {
       <PageHeader
         icon="@task"
         title={task?.title ?? 'Задача'}
-        tag={task ? <TaskStatusTag status={task.status} /> : undefined}
+        tag={task ? <TaskStatusTag minimal status={task.status} /> : undefined}
         backButtonPath={backPath}>
         {isManager && task && (
           <>
@@ -56,6 +55,7 @@ export default function TaskPage() {
             <Button icon="trash" variant="minimal" intent="danger" onClick={() => setDeleting(true)} />
           </>
         )}
+        {task && <TaskActions task={task} />}
       </PageHeader>
       <PageContent>
         <ApiCallStateBuilder<Task | null>
@@ -102,12 +102,17 @@ export default function TaskPage() {
               <CardItem icon="person" text="Исполнитель" tail={task.assignee.full_name} />
               <CardItem icon="edit" text="Постановщик" tail={task.author.full_name} />
               <CardItem icon="calendar" text="Создана" tail={formatDateTime(task.created_at)} />
-              <div className="app-taskPage-description">
-                {task.description || <span className="app-taskPage-noDescription">Без описания</span>}
-              </div>
+              {task.description && (
+                <Callout
+                  className="app-taskPage-description"
+                  intent="warning"
+                  icon="annotation"
+                  title="Описание">
+                  {task.description}
+                </Callout>
+              )}
             </CardContent>
           </Card>
-          <TaskActionsCard task={task} />
         </Column>
         <Column gap={20}>
           <Card>
@@ -125,22 +130,4 @@ export default function TaskPage() {
       </Grid>
     );
   }
-}
-
-function TaskActionsCard({ task }: { task: Task }) {
-  const profile = useProfile();
-  const hasActions = availableActions(task, profile).length > 0;
-  const hint = task.status === 'accepted'
-    ? 'Задача принята — статус окончательный.'
-    : task.status === 'review'
-      ? 'Ожидает проверки постановщиком.'
-      : 'Ожидает действий исполнителя.';
-  return (
-    <Card>
-      <CardHeader title="Действия" />
-      <CardContent>
-        {hasActions ? <TaskActions task={task} /> : <p className="app-taskPage-hint">{hint}</p>}
-      </CardContent>
-    </Card>
-  );
 }
