@@ -19,7 +19,7 @@ begin
     raise exception 'Create the three users in Authentication first';
   end if;
 
-  update public.profiles set full_name = 'Анна Смирнова (постановщик)', role = 'manager'  where id = v_mgr;
+  update public.profiles set full_name = 'Анна Смирнова', role = 'manager'  where id = v_mgr;
   update public.profiles set full_name = 'Иван Иванов',                 role = 'executor' where id = v_ivan;
   update public.profiles set full_name = 'Пётр Петров',                 role = 'executor' where id = v_petr;
 
