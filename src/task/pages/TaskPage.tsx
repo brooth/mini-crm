@@ -48,7 +48,7 @@ export default function TaskPage() {
       <PageHeader
         icon="@task"
         title={task?.title ?? 'Задача'}
-        tag={task ? <TaskStatusTag large status={task.status} /> : undefined}
+        tag={task ? <TaskStatusTag status={task.status} /> : undefined}
         backButtonPath={backPath}>
         {isManager && task && (
           <>
