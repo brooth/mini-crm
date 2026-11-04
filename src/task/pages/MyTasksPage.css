@@ -35,6 +35,11 @@
   white-space: nowrap;
 }
 
+/* no thead: drop Blueprint's header separator above the first row */
+.app-myTasksPage-table tbody tr:first-child td {
+  box-shadow: none !important;
+}
+
 .app-myTasksPage-object {
   width: 28%;
 }

@@ -26,6 +26,12 @@
   border: 2px solid var(--app-border);
 }
 
+/* newest entry (rendered first) = current step */
+.app-taskHistory-entry:first-child::before {
+  background: var(--app-text-secondary);
+  border-color: var(--app-text-secondary);
+}
+
 .app-taskHistory-meta {
   display: flex;
   gap: 10px;
