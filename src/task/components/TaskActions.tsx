@@ -1,7 +1,7 @@
 import { Dialog, DialogBody, DialogFooter } from "@blueprintjs/core";
 import { useState } from "react";
 
-import { Button, TextAreaField, Toast } from "app/components";
+import { Alert, Button, TextAreaField, Toast } from "app/components";
 import { useProfile } from "auth/auth.hooks";
 import { useApiErrors } from "utils";
 
@@ -11,27 +11,33 @@ import { useChangeTaskStatus } from "../task.hooks";
 import { TASK_STATUSES } from "../task.status";
 
 
+/** Status buttons for the page header. Every transition is confirmed first. */
 export default function TaskActions({ task }: TaskActionsProps) {
   const profile = useProfile();
   const { changeStatusState, changeStatus } = useChangeTaskStatus();
   useApiErrors(changeStatusState);
 
-  const [pending, setPending] = useState<TaskAction | null>(null);
-  const [commentAction, setCommentAction] = useState<TaskAction | null>(null);
+  const [confirming, setConfirming] = useState<TaskAction | null>(null);
   const [comment, setComment] = useState('');
 
   const actions = availableActions(task, profile);
   if (!actions.length) return null;
 
-  const run = async (action: TaskAction, actionComment?: string) => {
-    setPending(action);
-    const ok = await changeStatus(task, action.to, actionComment);
-    setPending(null);
-    if (ok) {
-      setCommentAction(null);
+  const close = () => {
+    if (changeStatusState.isLoading) return;
+    setConfirming(null);
+    setComment('');
+  };
+
+  const run = async (action: TaskAction) => {
+    const ok = await changeStatus(task, action.to, action.needsComment ? comment : undefined);
+    // on failure the toast shows the database error; keep the comment dialog open to retry
+    if (ok || !action.needsComment) {
+      setConfirming(null);
       setComment('');
-      Toast.showSuccess({ message: `Статус изменён: ${TASK_STATUSES[action.to].label}` });
     }
+    if (ok)
+      Toast.showSuccess({ message: `Статус изменён: ${TASK_STATUSES[action.to].label}` });
   };
 
   return (
@@ -42,16 +48,30 @@ export default function TaskActions({ task }: TaskActionsProps) {
           key={action.to}
           text={action.label}
           intent={action.intent}
-          loading={pending === action}
+          loading={changeStatusState.isLoading && confirming === action}
           disabled={changeStatusState.isLoading}
-          onClick={() => action.needsComment ? setCommentAction(action) : run(action)}
+          onClick={() => setConfirming(action)}
         />
       ))}
+      <Alert
+        isOpen={confirming != null && !confirming.needsComment}
+        icon={confirming?.icon}
+        intent={confirming?.intent}
+        confirmButtonText={confirming?.label}
+        cancelButtonText="Отмена"
+        loading={changeStatusState.isLoading}
+        onConfirm={() => run(confirming!)}
+        onCancel={close}>
+        <p>{confirming?.confirm}</p>
+        <p><b>«{task.title}»</b></p>
+      </Alert>
       <Dialog
-        title={commentAction?.label}
-        isOpen={commentAction != null}
-        onClose={() => !changeStatusState.isLoading && setCommentAction(null)}>
+        title={confirming?.label}
+        icon={confirming?.icon}
+        isOpen={confirming != null && !!confirming.needsComment}
+        onClose={close}>
         <DialogBody>
+          <p>{confirming?.confirm} <b>«{task.title}»</b></p>
           <TextAreaField
             label="Комментарий (обязательно)"
             placeholder="Что нужно исправить?"
@@ -64,14 +84,14 @@ export default function TaskActions({ task }: TaskActionsProps) {
         <DialogFooter
           actions={
             <>
-              <Button text="Отмена" onClick={() => setCommentAction(null)} />
+              <Button text="Отмена" onClick={close} />
               <Button
-                text={commentAction?.label}
-                intent={commentAction?.intent}
+                text={confirming?.label}
+                intent={confirming?.intent}
                 // the database rejects an empty/whitespace comment as well
                 disabled={!comment.trim()}
                 loading={changeStatusState.isLoading}
-                onClick={() => run(commentAction!, comment)}
+                onClick={() => run(confirming!)}
               />
             </>
           }
@@ -82,5 +102,5 @@ export default function TaskActions({ task }: TaskActionsProps) {
 }
 
 export type TaskActionsProps = {
-  task: Pick<Task, 'id' | 'status' | 'assignee_id' | 'object_id'>,
+  task: Pick<Task, 'id' | 'title' | 'status' | 'assignee_id' | 'object_id'>,
 }
