@@ -31,7 +31,7 @@ npm run dev            # http://localhost:5180
 5. SQL Editor: выполнить [supabase/seed.sql](supabase/seed.sql). Он назначит роли и имена и создаст 3 объекта и 6 задач во всех статусах с историей.
 6. Project Settings → API: скопировать **Project URL** и **anon / publishable key** в `.env`.
    Ключ `service_role` / secret key не нужен и в проект не попадает.
-7. (опционально) `npx supabase gen types typescript --project-id <ref> > src/lib/database.types.ts`.
+7. (опционально) `npx supabase gen types typescript --project-id <ref> > src/app/database.types.ts`.
    Сейчас этот файл написан вручную по миграции в том же формате.
 
 Деплой: Vercel → Import repo → Framework Vite → env `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`. SPA-роутинг настроен в [vercel.json](vercel.json). После деплоя: Supabase → Authentication → URL Configuration → Site URL = адрес Vercel.
@@ -69,12 +69,11 @@ npm run dev            # http://localhost:5180
 
 ```
 src/
-├── app/            # каркас из админки: компоненты (формы, карточки, таблицы, тосты), layout, sidebar, topbar
+├── app/            # каркас из админки: компоненты (формы, карточки, таблицы, тосты), layout, sidebar, topbar; типы БД (database.types.ts)
 ├── auth/           # сессия Supabase, профиль, AuthGuard, страница входа
-├── lib/            # supabase-клиент, типы БД
 ├── object/         # объекты: entity, store, hooks, диалог, страницы списка и карточки
 ├── task/           # задачи: статусы, availableActions, store, hooks, диалоги, история, страницы
-└── utils/          # ApiCallState, useFormData, useApiErrors и т.п.
+└── utils/          # supabase-клиент, ApiCallState, useFormData, useApiErrors и т.п.
 supabase/           # миграция, seed, SQL-тесты атак
 scripts/            # security-check.ts
 ```

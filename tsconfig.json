@@ -11,7 +11,6 @@
       "auth/*": ["auth/*"],
       "i18n/*": ["i18n/*"],
       "i18n": ["i18n/index"],
-      "lib/*": ["lib/*"],
       "object/*": ["object/*"],
       "task/*": ["task/*"],
       "utils/*": ["utils/*"],

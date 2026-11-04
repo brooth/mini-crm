@@ -15,7 +15,6 @@ export default defineConfig({
       'app': alias('app'),
       'auth': alias('auth'),
       'i18n': alias('i18n'),
-      'lib': alias('lib'),
       'object': alias('object'),
       'task': alias('task'),
       'utils': alias('utils'),

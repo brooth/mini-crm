@@ -1,4 +1,4 @@
-import type { Enums, Tables } from 'lib/database.types';
+import type { Enums, Tables } from 'app/database.types';
 import type { Profile } from 'auth/auth.entity';
 
 export type TaskStatus = Enums<'task_status'>;

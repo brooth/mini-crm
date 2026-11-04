@@ -1,4 +1,4 @@
-import type { Tables } from 'lib/database.types';
+import type { Tables } from 'app/database.types';
 import type { ProfileShort, TaskStatus } from 'task/task.entity';
 
 export type CrmObject = Pick<Tables<'objects'>, 'id' | 'name' | 'address'>;

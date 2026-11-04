@@ -1,4 +1,4 @@
-import type { Enums, Tables } from 'lib/database.types';
+import type { Enums, Tables } from 'app/database.types';
 
 export type UserRole = Enums<'user_role'>;
 

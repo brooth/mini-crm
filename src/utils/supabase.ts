@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 
-import type { Database } from './database.types';
+import type { Database } from 'app/database.types';
 
 // Only the public anon/publishable key ever reaches the browser.
 // All access rules are enforced by Postgres (RLS, column grants, RPC).

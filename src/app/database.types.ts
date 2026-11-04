@@ -1,5 +1,5 @@
 // Hand-written to match supabase/migrations/20261104000000_init.sql.
-// Regenerate with: npx supabase gen types typescript --project-id <ref> > src/lib/database.types.ts
+// Regenerate with: npx supabase gen types typescript --project-id <ref> > src/app/database.types.ts
 export type Json =
   | string
   | number

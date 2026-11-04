@@ -9,7 +9,7 @@
  */
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-import type { Database } from '../src/lib/database.types';
+import type { Database } from '../src/app/database.types';
 
 try { process.loadEnvFile('.env'); } catch { /* env may come from the shell */ }
 

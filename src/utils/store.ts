@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import type { StoreApi } from 'zustand';
 
-import { supabase } from 'lib/supabase';
+import { supabase } from './supabase';
 
 import { ApiCallState, isEmpty } from './api-state';
 

@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "typecheck": "tsc -b",
     "security-check": "tsx scripts/security-check.ts",
-    "gen-types": "supabase gen types typescript --project-id $SUPABASE_PROJECT_ID > src/lib/database.types.ts"
+    "gen-types": "supabase gen types typescript --project-id $SUPABASE_PROJECT_ID > src/app/database.types.ts"
   },
   "dependencies": {
     "@blueprintjs/core": "^6.7.0",

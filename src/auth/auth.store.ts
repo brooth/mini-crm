@@ -1,7 +1,7 @@
 import type { Session } from '@supabase/supabase-js';
 import { create } from 'zustand';
 
-import { supabase } from 'lib/supabase';
+import { supabase } from 'utils/supabase';
 import { ApiCallState, empty, failed, loading, success } from 'utils/api-state';
 import { resetStores } from 'utils/store';
 
