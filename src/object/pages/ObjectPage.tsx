@@ -44,6 +44,7 @@ export default function ObjectPage() {
       <PageHeader
         icon="@object"
         title={object?.name ?? 'Объект'}
+        breadcrumbs={[{ text: 'Объекты', path: '/objects' }]}
         backButtonPath="/objects">
         {isManager && object && (
           <>

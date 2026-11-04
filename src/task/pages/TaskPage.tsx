@@ -32,8 +32,15 @@ export default function TaskPage() {
   const [editing, setEditing] = useState(false);
   const [deleting, setDeleting] = useState(false);
 
-  const backPath = locationState?.backpath
+  const backPath: string = locationState?.backpath
     ?? (task && isManager ? `/objects/${task.object_id}` : isManager ? '/objects' : '/my-tasks');
+
+  // the trail follows where the user came from: object card or "my tasks"
+  const breadcrumbs = backPath === '/my-tasks'
+    ? [{ text: 'Мои задачи', path: '/my-tasks' }]
+    : backPath.startsWith('/objects/') && task
+      ? [{ text: 'Объекты', path: '/objects' }, { text: task.object.name, path: backPath }]
+      : [{ text: 'Объекты', path: '/objects' }];
 
   const onDelete = async () => {
     if (await deleteTask(id, task!.object_id)) {
@@ -48,6 +55,7 @@ export default function TaskPage() {
         icon="@task"
         title={task?.title ?? 'Задача'}
         tag={task ? <TaskStatusTag minimal status={task.status} /> : undefined}
+        breadcrumbs={breadcrumbs}
         backButtonPath={backPath}>
         {task && <TaskActions task={task} />}
         {isManager && task && (

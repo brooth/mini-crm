@@ -251,3 +251,29 @@
   margin-right: unset !important;
   margin-inline-end: 5px;
 }
+
+.app-page-header-crumb {
+  font-size: 1.6em;
+  height: 1.4em;
+  color: var(--app-text-secondary) !important;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 1;
+  min-width: 2em;
+}
+
+.app-page-header-crumb:hover {
+  color: var(--app-text-heading) !important;
+}
+
+.app-page-header > .app-page-header-crumb-separator {
+  font-size: 1.6em;
+  color: var(--app-text-tertiary);
+  margin-inline-start: 8px;
+  margin-inline-end: 8px;
+  flex-shrink: 0;
+}

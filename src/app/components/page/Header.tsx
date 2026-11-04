@@ -2,7 +2,7 @@ import {
   AlertProps, Icon as BlueprintIcon, InputGroup, MaybeElement
 } from "@blueprintjs/core";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Alert, Button, Icon } from "app/components";
 import { useI18nText } from "i18n/hooks";
@@ -16,7 +16,7 @@ export default function PageHeader({
   className, hidden, children, left, icon, title, onTitleChanged,
   backButtonPath, backButtonState, backButtonConfirmProps, callouts = [],
   onSearchQueryChange, onSearchQueryCommit, recentSearches,
-  searchQueryValue, searchPlaceholder, tag,
+  searchQueryValue, searchPlaceholder, tag, breadcrumbs,
   ...rest
 }: PageHeaderProps) {
   if (hidden) return null;
@@ -109,6 +109,12 @@ export default function PageHeader({
             onClick={() => goBack(backButtonConfirmProps)} />
         )}
         {icon && <div className="app-page-header-icon"><Icon icon={icon} /></div>}
+        {breadcrumbs?.map((crumb) => (
+          <React.Fragment key={crumb.path}>
+            <Link className="app-page-header-crumb" to={crumb.path}>{crumb.text}</Link>
+            <span className="app-page-header-crumb-separator">/</span>
+          </React.Fragment>
+        ))}
         {onTitleChanged && editingTitle ? (
           <div className="app-page-header-title-edit">
             <input
@@ -247,5 +253,7 @@ export type PageHeaderProps = {
   searchPlaceholder?: string | [string, object?, string?],
   callouts?: JSX.Element[],
   left?: JSX.Element,
+  /** Parent pages shown before the title as links, e.g. Объекты / ЖК «Северный» */
+  breadcrumbs?: Array<{ text: string, path: string }>,
   tag?: JSX.Element,
 }
