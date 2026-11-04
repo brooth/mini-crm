@@ -11,6 +11,9 @@
 
 .app-card-item div[class="icon"]:not(:empty) {
   padding-inline-end: 10px;
+  /* inline icon sat on the text baseline, ~1.5px below the label's center */
+  display: flex;
+  align-items: center;
 }
 
 .app-card-item div[class="icon"]:not(:empty) svg {
