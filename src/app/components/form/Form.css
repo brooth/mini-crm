@@ -1,0 +1,37 @@
+.app-form-form {
+  min-width: 250px;
+  max-width: 660px;
+}
+
+.app-form-form > h3 {
+  margin-top: -5px;
+  text-align: center;
+}
+
+.app-form-form > button:first-of-type {
+  margin-top: 10px;
+}
+
+.app-form-form .app-form-form {
+  border: 1px dashed var(--app-border);
+  padding: 10px 15px 0px 20px;
+  border-radius: 4px;
+  margin-inline-start: 2px;
+  margin-bottom: 10px;
+}
+
+.app-form-form .error {
+  color: #cd4246;
+}
+
+@media (max-width: 700px) {
+  .app-form-form {
+    min-width: 250px;
+  }
+}
+
+@media (max-width: 500px) {
+  .app-form-form {
+    min-width: 200px;
+  }
+}

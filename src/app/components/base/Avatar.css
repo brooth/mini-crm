@@ -1,0 +1,41 @@
+.app-base-avatar {
+  border: 1px solid var(--app-border);
+  border-radius: 99px;
+  margin-top: 5px;
+  cursor: pointer;
+  display: grid;
+  background-color: #f9bf3b;
+}
+
+.app-base-avatar span {
+  color: var(--app-text-primary);
+  font-weight: 400;
+  grid-column: 1;
+  grid-row: 1;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.app-base-avatar img {
+  border-radius: 99px;
+  grid-column: 1;
+  grid-row: 1;
+  margin: -0.5px;
+}
+
+.bp6-dark .app-base-avatar {
+  background-color: #b8860b;
+}
+
+.app-base-avatar-grayscale {
+  background-color: #bbb;
+}
+
+.app-base-avatar-grayscale span {
+  color: #fff;
+}
+
+.app-base-avatar-grayscale img {
+  filter: grayscale(1);
+}

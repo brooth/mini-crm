@@ -1,0 +1,13 @@
+.app-form-row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.app-form-row > * {
+  flex-grow: 1;
+}
+
+.app-form-row > *:not(:last-child) {
+  margin-inline-end: 10px;
+}

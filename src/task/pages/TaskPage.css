@@ -1,0 +1,17 @@
+.app-taskPage-description {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: var(--app-bg-section);
+  border-radius: 4px;
+  white-space: pre-wrap;
+}
+
+.app-taskPage-noDescription,
+.app-taskPage-hint {
+  color: var(--app-text-tertiary);
+}
+
+.app-taskPage-objectLink {
+  margin-inline-start: 8px;
+  font-size: 12px;
+}

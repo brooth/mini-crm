@@ -1,0 +1,25 @@
+.app-loginPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 16px;
+}
+
+.app-loginPage-card {
+  width: 100%;
+  max-width: 380px;
+  padding: 30px;
+}
+
+.app-loginPage-card h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--app-text-heading);
+}
+
+.app-loginPage-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

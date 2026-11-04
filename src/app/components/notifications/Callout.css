@@ -1,0 +1,35 @@
+.app-notifications-callout[class~='bp6-callout'] {
+  border-radius: 9px;
+}
+
+.app-notifications-callout[class~="bp6-callout"][class~="bp6-intent-warning"] {
+  border: #935610 1px solid;
+}
+
+.app-notifications-callout[class~="bp6-callout"][class~="bp6-intent-warning"] a {
+  color: #c34010;
+}
+
+.app-notifications-callout[class~="bp6-callout"][class~="bp6-intent-warning"] .app-notifications-callout-actions button {
+  color: #935610;
+}
+
+.app-notifications-callout[class~='bp6-callout'] h4[class~='bp6-heading'] {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.app-notifications-callout-actions {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.app-notifications-callout-actions button {
+  margin-inline-end: 10px;
+  font-weight: 600;
+}

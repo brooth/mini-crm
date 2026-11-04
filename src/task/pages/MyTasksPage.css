@@ -1,0 +1,22 @@
+.app-myTasksPage-empty {
+  margin-top: 120px;
+}
+
+.app-myTasksPage-filter {
+  overflow-x: auto;
+}
+
+.app-myTasksPage-tableWrapper {
+  overflow-x: auto;
+}
+
+.app-myTasksPage-table {
+  width: 100%;
+}
+
+.app-myTasksPage-date {
+  width: 1%;
+  white-space: nowrap;
+  text-align: end !important;
+  color: var(--app-text-tertiary);
+}

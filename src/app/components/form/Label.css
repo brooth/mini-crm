@@ -1,0 +1,54 @@
+.app-form-label {
+  margin-inline-start: 2px;
+  white-space: nowrap;
+  display: flex !important;
+}
+
+.app-form-label span[class~="text"] {
+  flex-grow: 1;
+  font-style: normal;
+  font-size: 12px;
+  display: inline-flex;
+}
+
+.app-form-label span[class~="text"] span[class~="bp6-popover-target"] {
+  line-height: 0px;
+  height: 12px;
+  margin-inline-start: 5px !important;
+  margin-top: 2.4px !important;
+}
+
+.app-form-label button {
+  min-height: 16px !important;
+  min-width: 16px !important;
+  padding: 0px 3px 0px 3px !important;
+  margin-inline-start: 2px;
+  margin-inline-end: 0px;
+}
+
+.app-form-label button:not([class*=bp6-intent-]):not([class~=bp6-disabled]) {
+  color: #e9a610;
+}
+
+.app-form-label button:not([class*=bp6-intent-]):not([class~=bp6-disabled]) span {
+  color: #e9a610;
+}
+
+.app-form-label button:not([class*=bp6-intent-]):not([class~=bp6-disabled]) svg {
+  color: #e9a610;
+}
+
+.app-form-label button:not([class*=bp6-intent-]):not([class~=bp6-disabled]) svg path[class=bp6-spinner-head] {
+  stroke: #e9a610;
+}
+
+.app-form-label button span {
+  font-size: 12px;
+  min-width: unset !important;
+  margin: 0px !important;
+}
+
+.app-form-label button span svg {
+  width: 11px;
+  height: 11px;
+}

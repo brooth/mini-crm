@@ -1,0 +1,35 @@
+.app-workspace {
+  width: 100%;
+  max-width: 1280px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.app-workspace-body {
+  width: 100%;
+  min-height: calc(100vh - 52px);
+  display: flex;
+  flex-direction: row;
+  background: var(--app-bg-secondary);
+  border-left: 1px solid var(--app-border-subtle);
+  border-right: 1px solid var(--app-border-subtle);
+}
+
+.app-workspace-sidebar {
+  width: 230px;
+}
+
+.app-workspace-content {
+  width: calc(100% - 230px);
+  display: flex;
+  flex-direction: column;
+  border-inline-start: 1px solid var(--app-border-light);
+}
+
+@media (max-width: 1000px) {
+  .app-workspace-content {
+    width: 100%;
+  }
+}

@@ -1,0 +1,7 @@
+.app-tooltips-info {
+  color: var(--app-text-tertiary);
+}
+
+.app-tooltips-info[class~='bp6-popover-target'] {
+  margin: 0 !important;
+}

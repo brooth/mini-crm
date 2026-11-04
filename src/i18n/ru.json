@@ -1,0 +1,18 @@
+{
+  "search_dots": "Поиск...",
+  "tryAgain": "Повторить",
+  "yes": "Да",
+  "nope": "Нет",
+  "PageNotFound": {
+    "title": "Не найдено",
+    "msg": "Запись не существует или у вас нет к ней доступа",
+    "button": "На главную"
+  },
+  "ApiErrors": {
+    "http-error": "Нет связи с сервером",
+    "http-error_msg": "Проверьте подключение к интернету",
+    "server-error": "Ошибка сервера",
+    "server-error_msg": "Что-то пошло не так",
+    "invalid_credentials": "Неверный email или пароль"
+  }
+}

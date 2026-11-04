@@ -1,0 +1,38 @@
+.app-card {
+  border-radius: 6px !important;
+  background-color: var(--app-bg-card) !important;
+  padding: 0px !important;
+}
+
+.app-card footer {
+  font-family: 'Lato';
+  font-size: 10pt;
+  color: var(--app-text-secondary);
+  margin-top: auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.app-card-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-card-animating {
+  animation: waves 30000s linear infinite forwards;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  cursor: none;
+  pointer-events: none;
+}
+
+@keyframes waves {
+  0% {
+    background-position: 0vw 0;
+  }
+  100% {
+    background-position: 1000000vw 0;
+  }
+}

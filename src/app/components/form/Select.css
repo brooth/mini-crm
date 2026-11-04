@@ -1,0 +1,80 @@
+.app-form-select {
+  padding: 0px;
+}
+
+.app-form-select button[class~='bp6-button'] {
+  height: 35px;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  padding: 10px 10px;
+  outline: none;
+  border: 0px solid;
+  border-radius: 5px;
+  box-shadow: inset 0 0 0 1px rgba(17,20,24,.2), 0 .2px .5px rgba(17,20,24,.1);
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%);
+  background-position: calc(100% - 15px) calc(1em + 2px), calc(100% - 10px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+  background-size: 5px 5px, 5px 5px, 1px 1.5em;
+  background-repeat: no-repeat;
+  background-color: var(--app-bg-input) !important;
+}
+
+.app-form-select button[class~='bp6-button'] li {
+  display: inline-flex;
+}
+
+.app-form-select button[class~='bp6-button'] span[class~="bp6-button-text"] {
+  flex: 1;
+}
+
+.app-form-select button[class~='bp6-button']:hover {
+  box-shadow: inset 0 0 0 1px rgba(17,20,24,.2), 0 .2px .5px rgba(17,20,24,.1);
+}
+
+.app-form-select button[class~='bp6-button'].app-form-select-placeholder * {
+  color: var(--app-text-secondary) !important;
+}
+
+.app-form-select button[class~='bp6-button'] * {
+  pointer-events: none;
+}
+
+.app-form-select button[class~='bp6-button'] *:hover {
+  background-color: unset !important;
+  color: unset !important;
+}
+
+.app-form-select[class~="bp6-disabled"] button {
+  box-shadow: none !important;
+  background-color: rgba(211, 216, 222, 0.5) !important;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.app-form-select[class~="bp6-disabled"] button * {
+  color: rgba(95, 107, 124, 0.6) !important;
+}
+
+.app-form-select[class~="bp6-disabled"] button img {
+  filter: grayscale(100%);
+}
+
+.bp6-dark .app-form-select button[class~='bp6-button'] {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0.2px 0.5px rgba(0, 0, 0, 0.3);
+}
+
+.bp6-dark .app-form-select button[class~='bp6-button']:hover {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0.2px 0.5px rgba(0, 0, 0, 0.3);
+}
+
+.app-form-select-read-only button {
+  opacity: 1;
+  color: var(--app-text-heading);
+}
+
+.app-form-select-popover {
+  max-height: 50vh;
+  overflow-y: auto;
+}

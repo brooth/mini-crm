@@ -1,0 +1,22 @@
+.app-back-activity-indicator {
+  width: 100%;
+  margin: 150px 0px;
+}
+
+.app-back-activity-indicator.app-back-activity-indicator-compact {
+  margin: 10px 0px;
+}
+
+.app-back-activity-indicator-fade-in-animation {
+  animation: fadein 2s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

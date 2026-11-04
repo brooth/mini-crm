@@ -1,0 +1,7 @@
+.app-form-radio-group label[class*="bp6-radio"] {
+  margin-left: 5px;
+}
+
+.app-form-radio-group-read-only {
+  pointer-events: none;
+}

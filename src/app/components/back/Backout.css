@@ -1,0 +1,20 @@
+.app-back-backout {
+  margin: 150px 0px;
+  justify-content: flex-start;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Lato";
+  line-height: 20px;
+}
+
+.app-back-backout-compact {
+  margin: 20px 0px;
+}
+
+.app-back-backout-medium {
+  margin: 60px 0px;
+}
+
+.bp6-dark .app-back-backout .bp6-button-text  {
+  color: var(--app-text-tertiary) !important;
+}

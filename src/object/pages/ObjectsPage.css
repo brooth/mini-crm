@@ -1,0 +1,24 @@
+.app-objectsPage-empty {
+  margin-top: 120px;
+}
+
+.app-objectsPage-tableWrapper {
+  overflow-x: auto;
+}
+
+.app-objectsPage-table {
+  width: 100%;
+}
+
+.app-objectsPage-count {
+  text-align: end !important;
+  width: 80px;
+}
+
+.app-objectsPage-actions {
+  width: 1%;
+  white-space: nowrap;
+  text-align: end !important;
+  padding-top: 5px !important;
+  padding-bottom: 0 !important;
+}

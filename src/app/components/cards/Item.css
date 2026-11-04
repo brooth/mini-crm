@@ -1,0 +1,24 @@
+.app-card-item {
+  display: flex;
+  align-items: center;
+  margin: 0px 0px 5px 0px;
+}
+
+.app-card-item p {
+  margin: 0px;
+  font-size: 13px;
+}
+
+.app-card-item div[class="icon"]:not(:empty) {
+  padding-inline-end: 10px;
+}
+
+.app-card-item div[class="icon"]:not(:empty) svg {
+  color: #777777;
+}
+
+.app-card-item div[class="right"] {
+  margin-inline-start: auto;
+  padding-inline-start: 5px;
+  text-align: right;
+}

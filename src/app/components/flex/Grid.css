@@ -1,0 +1,55 @@
+.app-flex-grid {
+  margin: 0 auto;
+  display: grid;
+  align-items: self-start;
+}
+
+.app-flex-grid[class~="md-2"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.app-flex-grid[class~="md-3"] {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.app-flex-grid[class~="md-4"] {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.app-flex-grid[class~="md-5"] {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+@media (max-width: 1100px) {
+  .app-flex-grid[class~="sm-3"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .app-flex-grid[class~="sm-2"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .app-flex-grid[class~="sm-1"] {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .app-flex-grid[class~="xs-3"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .app-flex-grid[class~="xs-2"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .app-flex-grid[class~="xs-1"] {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 400px) {
+  .app-flex-grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+}

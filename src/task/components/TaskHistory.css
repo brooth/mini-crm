@@ -1,0 +1,58 @@
+.app-taskHistory {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 4px 0 4px 14px;
+  border-inline-start: 2px solid var(--app-border-light);
+}
+
+.app-taskHistory-entry {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.app-taskHistory-entry::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: -20px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--app-bg-secondary);
+  border: 2px solid var(--app-border);
+}
+
+.app-taskHistory-meta {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--app-text-tertiary);
+}
+
+.app-taskHistory-actor {
+  color: var(--app-text-secondary);
+  font-weight: 500;
+}
+
+.app-taskHistory-statuses {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.app-taskHistory-created {
+  font-size: 12px;
+  color: var(--app-text-secondary);
+}
+
+.app-taskHistory-comment {
+  margin: 0;
+  padding: 6px 10px;
+  border-inline-start: 3px solid var(--app-border);
+  background: var(--app-bg-section);
+  white-space: pre-wrap;
+}

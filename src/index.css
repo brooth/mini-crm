@@ -1,0 +1,366 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,800");
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,800");
+
+:root {
+  /* Z-index layering */
+  --page-header-z-index: 5;
+  --menu-z-index: 10;
+  --guard-z-index: 15;
+  --dialog-z-index: 20;
+  --toast-z-index: 30;
+
+  /* Theme colors */
+  --app-bg: #F5F5F5;
+  --app-bg-secondary: white;
+  --app-bg-card: #fcfcfc;
+  --app-bg-input: #fefeff;
+  --app-bg-section: #f6f6f6;
+  --app-bg-overlay: #90a2a25d;
+  --app-text-primary: #505050;
+  --app-text-secondary: #666;
+  --app-text-tertiary: #999;
+  --app-text-heading: #182026;
+  --app-text-input: #4c4c4c;
+  --app-border: #d8d8d8;
+  --app-border-light: #eee;
+  --app-border-subtle: rgba(0, 0, 0, 0.1);
+}
+
+.bp6-dark {
+  --app-bg: #1c2127;
+  --app-bg-secondary: #252a31;
+  --app-bg-card: #2d333b;
+  --app-bg-input: #232931;
+  --app-bg-section: #303840;
+  --app-bg-overlay: rgba(0, 0, 0, 0.5);
+  --app-text-primary: #d4d4d4;
+  --app-text-secondary: #a0a0a0;
+  --app-text-tertiary: #757575;
+  --app-text-heading: #e0e0e0;
+  --app-text-input: #bebebe;
+  --app-border: #444;
+  --app-border-light: #3a3a3a;
+  --app-border-subtle: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--app-bg);
+  color: var(--app-text-primary);
+  font-weight: 400;
+}
+
+body:after {
+  content: '';
+  position: fixed;
+  top: -50%;
+  right: -50%;
+  bottom: -50%;
+  left: -50%;
+  z-index: -1;
+  background: var(--app-bg);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--app-bg);
+}
+
+*[hidden] {
+  display: none;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+/* Common */
+.fullscreenGuard {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: var(--guard-z-index);
+  display: flex;
+  justify-content: center;
+  background-color: var(--app-bg-overlay);
+  backdrop-filter: blur(1.5px);
+  overflow: scroll;
+}
+
+/* Common utility classes */
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.margin5 {
+  margin: 5px;
+}
+
+/*
+ * Blueprint overrides
+ */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+.bp6-input {
+  color: var(--app-text-input);
+  transition: box-shadow 0ms;
+  box-shadow: inset 0 0 0 1px rgb(17 20 24 / 20%), 0 0.2px 0.5px rgb(17 20 24 / 10%);
+  border-radius: 3px;
+  height: 35px;
+}
+
+.bp6-dark .bp6-input {
+  color: var(--app-text-input);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0.2px 0.5px rgba(0, 0, 0, 0.3);
+  background-color: var(--app-bg-input) !important;
+}
+
+.bp6-input[readonly] {
+  box-shadow: inset 0 0 0 1px rgba(39, 44, 51, 0.15) !important;
+}
+
+.bp6-control-group:not(.bp6-vertical) > :not(:last-child) {
+  margin-right: unset;
+  margin-inline-end: 2px;
+}
+
+.bp6-input-group .bp6-input-left-container,
+.bp6-input-group .bp6-input-actions {
+  margin-top: 3px;
+  margin-inline-end: 3px;
+}
+
+.bp6-input-group .bp6-input-action button {
+  min-height: 29px;
+  min-width: 29px;
+}
+
+/* checkbox */
+.bp6-control .bp6-control-indicator {
+  margin-right: unset;
+  margin-inline-end: 10px;
+}
+.bp6-control:not(.bp6-align-right) {
+  padding-left: unset;
+  padding-inline-start: 26px;
+}
+.bp6-control:not(.bp6-align-right) .bp6-control-indicator {
+  margin-right: unset;
+  margin-inline-start: -26px;
+  margin-inline-end: 10px;
+}
+
+/* radio */
+.bp6-control input:checked ~ .bp6-control-indicator,
+.bp6-control:hover input:checked ~ .bp6-control-indicator {
+  background-color: #f9bf3b;
+}
+
+/* radio & switch */
+.bp6-control.bp6-switch input:checked ~ .bp6-control-indicator,
+.bp6-control.bp6-switch input:checked:not(:disabled):active ~ .bp6-control-indicator,
+.bp6-control.bp6-switch:hover input:checked ~ .bp6-control-indicator {
+  background-color: #f9bf3b;
+}
+
+/* dialog */
+.bp6-dialog.bp6-alert {
+  margin: 10px;
+}
+
+.bp6-dialog.bp6-alert > .bp6-alert-body > .bp6-alert-contents > h3 {
+  margin-top: 9px;
+}
+
+.rtl .bp6-alert-body .bp6-icon {
+  margin-right: 0px;
+  margin-left: 20px;
+}
+
+.rtl .bp6-dialog-header .bp6-icon {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* menu */
+.bp6-menu {
+  text-align: start;
+}
+.bp6-menu-item {
+  border-radius: 5px;
+  outline: none;
+  margin: 2px 0px;
+  padding: 6px 12px 6px 12px;
+  text-align: start;
+  gap: 7px;
+}
+.bp6-menu-item:hover,
+.bp6-menu-item.bp6-selected,
+.bp6-menu-item.bp6-selected:hover,
+.bp6-menu-item.bp6-active,
+.bp6-menu-item.bp6-active:hover {
+  background-color: #f8c34bd1;
+  color: var(--app-text-primary) !important;
+}
+
+.bp6-menu-item.bp6-active .bp6-icon,
+.bp6-menu-item.bp6-active .bp6-menu-item-label {
+  color: var(--app-text-primary) !important;
+}
+
+.bp6-menu-item::before, .bp6-menu-item > * {
+  margin-right: unset;
+}
+
+.rtl .bp6-icon.bp6-icon-caret-right {
+  transform: rotateZ(180deg);
+}
+
+/* non-ideal-state */
+.bp6-non-ideal-state {
+  height: unset;
+}
+
+/* tabs */
+.bp6-tab-list {
+  overflow-x: scroll;
+  padding: 4px;
+}
+.bp6-tab-list::-webkit-scrollbar {
+  display: none;
+}
+.bp6-tab {
+  font-family: "Lato";
+  outline: none;
+}
+.bp6-tab[aria-selected="true"],
+.bp6-tab:not([aria-disabled="true"]):hover {
+  color: #f9bf3b;
+}
+.bp6-tab-indicator {
+  background-color: #f9bf3b !important;
+}
+.bp6-dark .bp6-tab[aria-selected="true"],
+.bp6-dark .bp6-tab:not([aria-disabled="true"]):hover {
+  color: #b8860b;
+}
+.bp6-dark .bp6-tab-indicator {
+  background-color: #b8860b !important;
+}
+.rtl .bp6-tab-list > *:not(:last-child) {
+  margin-right: 0px;
+  margin-left: 20px;
+}
+.rtl .bp6-tab-list .bp6-tab-indicator-wrapper {
+  margin-left: 0px;
+}
+
+/* card */
+.bp6-dark .bp6-card {
+  box-shadow: 0 0 0 1px rgba(17, 20, 24, 0.1), 0 2px 4px rgba(17, 20, 24, 0.2), 0 8px 24px rgba(17, 20, 24, 0.2);
+}
+.bp6-card.bp6-interactive:active {
+  opacity: 0.9;
+  box-shadow: 0 0 0 1px rgba(17, 20, 24, 0.1), 0 0 0 rgba(17, 20, 24, 0), 0 1px 1px rgba(17, 20, 24, 0.2);
+  transition-duration: 0;
+}
+
+/* tag */
+.bp6-tag {
+  border-radius: 4px;
+  padding: 1px 4px 1px 4px;
+  font-weight: normal;
+  min-width: 10px;
+}
+
+/* slider */
+.bp6-slider-handle > .bp6-slider-label {
+  background-color: #858687;
+  font-size: 8pt;
+}
+.bp6-slider-axis > .bp6-slider-label {
+  color: #999595;
+}
+
+/* Popover */
+.bp6-popover {
+  border-radius: 5px;
+}
+.bp6-popover .bp6-popover-content {
+  border-radius: 5px;
+}
+.bp6-popover .bp6-popover-content .bp6-input-group {
+  padding: 10px 8px;
+}
+.bp6-popover .bp6-popover-content .bp6-input-group span.bp6-icon {
+  left: 10px;
+  top: 10px;
+}
+.bp6-popover .bp6-popover-content .bp6-input-group span.bp6-input-action {
+  right: 8px;
+  top: 10px;
+}
+.bp6-popover .bp6-popover-content .bp6-input-group input {
+  border-radius: 5px;
+}
+.bp6-popover .bp6-menu {
+  border-radius: 5px;
+}
+
+.bp6-dialog {
+  margin: 10px;
+}
+
+/* Dark mode overrides */
+.bp6-dark .bp6-button.bp6-outlined,
+.bp6-dark .bp6-button .bp6-button-text {
+  color: var(--app-text-primary);
+}
+
+.bp6-dark .bp6-menu-item:hover,
+.bp6-dark .bp6-menu-item.bp6-selected,
+.bp6-dark .bp6-menu-item.bp6-selected:hover,
+.bp6-dark .bp6-menu-item.bp6-active,
+.bp6-dark .bp6-menu-item.bp6-active:hover {
+  background-color: #b8860b99;
+  color: var(--app-text-primary) !important;
+}
+
+.bp6-dark .bp6-menu-item.bp6-active .bp6-icon,
+.bp6-dark .bp6-menu-item.bp6-active .bp6-menu-item-label {
+  color: var(--app-text-primary) !important;
+}
+
+.bp6-dark .bp6-control input:checked ~ .bp6-control-indicator,
+.bp6-dark .bp6-control:hover input:checked ~ .bp6-control-indicator {
+  background-color: #b8860b;
+}
+
+.bp6-dark .bp6-control.bp6-switch input:checked ~ .bp6-control-indicator,
+.bp6-dark .bp6-control.bp6-switch input:checked:not(:disabled):active ~ .bp6-control-indicator,
+.bp6-dark .bp6-control.bp6-switch:hover input:checked ~ .bp6-control-indicator {
+  background-color: #b8860b;
+}

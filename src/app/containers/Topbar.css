@@ -1,0 +1,31 @@
+.app-topbar {
+  background-color: var(--app-bg) !important;
+  border-bottom: 2px solid #2d72d2;
+  box-shadow: none !important;
+  height: 52px !important;
+  padding: 0px 10px !important;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.app-topbar .bp6-align-left,
+.app-topbar .bp6-align-right {
+  gap: 10px;
+}
+
+.app-topbar-logo {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.app-topbar-user {
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .app-topbar-user {
+    display: none;
+  }
+}

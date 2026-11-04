@@ -1,0 +1,11 @@
+.app-card-content {
+  padding: 15px 20px 8px 20px;
+}
+
+.app-card-content h4:first-child{
+  margin: 0px 0px 10px -8px;;
+}
+
+.app-card-content div[class~="form"] {
+  max-width: unset;
+}

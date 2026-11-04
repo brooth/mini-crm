@@ -1,0 +1,25 @@
+.app-toast div[class~="bp6-toast"] {
+  margin: 4px;
+  min-width: 200px !important;
+  position: fixed !important;
+  border-radius: 4px;
+  padding: 2px 3px 0px 3px;
+}
+
+.app-toast button[aria-label="Close"] {
+  border-radius: 99px;
+  margin-inline-end: 1px;
+}
+
+.bp6-toast > .bp6-icon {
+  margin: auto 0px auto 13px;
+}
+
+.rtl .bp6-toast > .bp6-icon {
+  margin: auto 13px auto 0px;
+}
+
+.bp6-toast > .bp6-button-group {
+  padding: 0px 0px 2px 0px;
+  margin: auto 0px;
+}

@@ -1,0 +1,18 @@
+.app-form-field[class~="horizontal"] {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-form-field[class~="horizontal"] label {
+  flex: 1;
+  margin-bottom: 0 !important;
+}
+
+.app-form-field[class~="horizontal"].app-form-field-borderless > div[class~="bp6-form-content"] {
+  border: none;
+}
+
+.error {
+  color: #cd4246 !important;
+}

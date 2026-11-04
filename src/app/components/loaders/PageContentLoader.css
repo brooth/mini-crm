@@ -1,0 +1,11 @@
+.app-loaders-page-content-loader {
+  padding: 45px 20px 40px 20px;
+}
+
+.app-loaders-page-content-loader svg:first-child {
+  margin-bottom: 50px;
+}
+
+.app-loaders-page-content-loader svg {
+  width: 100%;
+}

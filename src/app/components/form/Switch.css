@@ -1,0 +1,26 @@
+.app-form-switch {
+  margin: 0px 0px 13px 0px;
+}
+
+.app-form-switch label[class~="bp6-control"] {
+  margin-top: 0px;
+}
+
+.app-form-switch label[class~="bp6-control"] input {
+  width: 0;
+}
+
+.app-form-switch label[class~="bp6-control"][class~="bp6-align-right"] {
+  padding-right: 0;
+}
+
+.app-form-switch label[class~="bp6-control"][class~="bp6-align-right"] span[class~="bp6-control-indicator"] {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.app-form-switch-disabled {
+}
+
+.app-form-switch-read-only {
+}

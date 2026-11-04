@@ -1,0 +1,59 @@
+.app-form-numeric [readonly] {
+  color: var(--app-text-secondary);
+}
+
+.app-form-numeric input {
+  height: 30px;
+}
+
+.app-form-numeric input::placeholder {
+  color: var(--app-text-tertiary);
+}
+
+.app-form-numeric .error {
+  color: red;
+  font-family: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", "blueprint-icons-16", sans-serif;
+}
+
+.app-form-numeric div.bp6-form-content {
+  width: 100%;
+}
+
+.app-form-numeric div.bp6-form-content div.bp6-numeric-input {
+  width: 100%;
+}
+
+.app-form-numeric div.bp6-form-content div.bp6-numeric-input div.bp6-input-group {
+  width: 100%;
+}
+
+.app-form-numeric div.bp6-form-content div.bp6-numeric-input div.bp6-input-group input {
+  width: 100%;
+}
+
+.app-form-numeric div.bp6-form-content div.bp6-numeric-input div.bp6-button-group {
+  position: absolute;
+  inset-inline-end: 0.5px;
+  top: 0.5px;
+  bottom: 0.5px;
+}
+
+.app-form-numeric div.bp6-form-content div.bp6-numeric-input div.bp6-button-group button {
+  width: 16px;
+  min-width: 0px;
+  z-index: 20;
+  margin: 0px;
+}
+
+.app-form-numeric div.bp6-form-content div.bp6-numeric-input div.bp6-button-group.bp6-vertical button:first-child {
+  border-radius: 3px 3px 0 0;
+}
+
+.app-form-numeric div.bp6-form-content div.bp6-numeric-input div.bp6-button-group.bp6-vertical button:last-child {
+  border-radius: 0 0 3px 3px;
+}
+
+.app-form-numeric div.bp6-form-content div.bp6-numeric-input div.bp6-button-group button span svg {
+  width: 13px;
+  height: 13px;
+}

@@ -1,0 +1,119 @@
+.app-buttons-button[class~="bp6-button"] {
+  font-family: "Lato";
+  font-size: 14px;
+  opacity: 1;
+  min-height: 32px;
+  min-width: 34px;
+  gap: 5px;
+  border-radius: 3px;
+  transition: all 50ms linear 0ms, opacity 200ms linear 50ms;
+}
+
+.app-buttons-button[class~="bp6-button"] span {
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.app-buttons-button[class~="bp6-button"][class~="bp6-intent-warning"] {
+  background-color: #f9bf3b;
+  color: #5c5c5c;
+}
+
+.app-buttons-button[class~="bp6-button"][class~="bp6-intent-warning"]:hover {
+  background-color: #ffc53d !important;
+  color: #6c5c5c !important;
+}
+
+.app-buttons-button[class~="bp6-button"][class~="bp6-intent-warning"][class~="bp6-disabled"] {
+  background-color: #edbe4e !important;
+}
+
+.app-buttons-button-hidden {
+  opacity: 0;
+  min-width: 0px !important;
+  padding: 0px !important;
+  margin: 0px !important;
+  border: 0px !important;
+  font-size: 0px !important;
+  transition: all 50ms linear 200ms, opacity 200ms linear 0s;
+}
+
+.app-buttons-button-loading {
+  box-shadow: none;
+  position: relative;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.app-buttons-button-loading::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: repeating-linear-gradient(300deg,
+      transparent,
+      transparent 0.5rem,
+      rgba(92, 85, 85, 0.4) 0.5rem,
+      rgba(92, 85, 85, 0.2) 0.75rem);
+  animation: loading 0.8s infinite linear, fadein 1s linear;
+}
+
+.app-buttons-button-loading[class~="bp6-intent-primary"]::before,
+.app-buttons-button-loading[class~="bp6-intent-success"]::before,
+.app-buttons-button-loading[class~="bp6-intent-danger"]::before {
+  background: repeating-linear-gradient(300deg,
+      transparent,
+      transparent 0.5rem,
+      rgba(255, 255, 255, 0.4) 0.5rem,
+      rgba(255, 255, 255, 0.2) 0.75rem);
+}
+
+.app-buttons-button-loading[class~="bp6-intent-warning"] {
+  color: #5c5c5c;
+}
+
+.app-buttons-button-loading[class~="bp6-intent-warning"]::before {
+  background: repeating-linear-gradient(300deg,
+      transparent,
+      transparent 0.5rem,
+      rgba(194, 75, 19, 0.4) 0.5rem,
+      rgba(194, 75, 19, 0.2) 0.75rem);
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(1.75rem);
+  }
+}
+
+.bp6-dark .app-buttons-button[class~="bp6-button"][class~="bp6-intent-warning"] {
+  background-color: #b8860b;
+  color: #e0e0e0;
+}
+
+.bp6-dark .app-buttons-button[class~="bp6-button"][class~="bp6-intent-warning"]:hover {
+  background-color: #d4a017 !important;
+  color: #e0e0e0 !important;
+}
+
+.bp6-dark .app-buttons-button[class~="bp6-button"][class~="bp6-intent-warning"][class~="bp6-disabled"] {
+  background-color: #8b7200 !important;
+}

@@ -1,0 +1,25 @@
+.app-tabs-tabs-observer.app-tabs-tabs-sticky {
+  position: sticky;
+}
+
+.app-tabs-tabs-panel {
+  position: fixed;
+  top: 0px;
+  background-color: transparent;
+  z-index: 4;
+}
+
+.app-tabs-tabs-panel[stuck] {
+  box-shadow: 0 2px 5px -2px var(--app-border-light);
+  background-color: var(--app-bg-secondary);
+  transition: box-shadow 500ms, padding 100ms linear;
+}
+
+.app-tabs-tabs-sticky-tab-list div[class~="bp6-tab-list"] {
+  position: sticky;
+  z-index: 6;
+}
+
+.app-tabs-tabs-remove-page-header-shadows {
+  box-shadow: none !important;
+}

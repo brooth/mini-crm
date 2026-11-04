@@ -1,0 +1,26 @@
+.app-sidebar.bp6-menu.app-workspace-sidebar {
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: 100vh;
+}
+
+.app-sidebar > li {
+  margin: 1px 1px;
+  color: var(--app-text-primary);
+  font-size: 13px;
+}
+
+.app-sidebar > li.bp6-menu-header {
+  margin-top: 3px;
+}
+
+.app-sidebar > li.bp6-menu-header h6 {
+  font-weight: 600;
+}
+
+.app-sidebar > li svg {
+  color: var(--app-text-primary);
+  width: 13px;
+  height: 13px;
+}

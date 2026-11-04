@@ -1,0 +1,3 @@
+.bp6-button::before, .bp6-button > * {
+    margin-right: 2px;
+}

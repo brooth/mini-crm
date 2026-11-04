@@ -1,0 +1,8 @@
+.app-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-flex-column-fill {
+  flex: 1;
+}
